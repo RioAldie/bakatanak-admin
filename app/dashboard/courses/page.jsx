@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from '@/app/ui/dashboard/course/course.module.css';
 import { courses, getCourses } from '@/app/lib/data';
 import { getData } from '@/app/api/course/route';
-import { deletePost } from '@/app/lib/action';
+import { deleteCourse } from '@/app/lib/action';
 
 const CoursesPage = async ({ searchParams }) => {
   const q = searchParams?.q || '';
@@ -15,7 +15,7 @@ const CoursesPage = async ({ searchParams }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <Link href="/dashboard/products/add">
+        <Link href="/dashboard/courses/add">
           <button className={styles.addButton}>Add New</button>
         </Link>
       </div>
@@ -47,10 +47,10 @@ const CoursesPage = async ({ searchParams }) => {
               <td className={styles.desc}>{course.desc}</td>
               {/* <td>{product.desc}</td>
               <td>${product.price}</td>
-              <td>{product.createdAt?.toString().slice(4, 16)}</td>
+              
               <td>{product.stock}</td> */}
               <td>{course.category}</td>
-              <td>{course.createdAt}</td>
+              <td>{course.createdAt?.toString().slice(4, 16)}</td>
               <td>
                 <div className={styles.buttons}>
                   <Link href={`/dashboard/products/${course.id}`}>
@@ -59,7 +59,7 @@ const CoursesPage = async ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  <form action={deletePost}>
+                  <form action={deleteCourse}>
                     <input
                       type="hidden"
                       name="id"
