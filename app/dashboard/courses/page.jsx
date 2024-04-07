@@ -1,14 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/app/ui/dashboard/course/course.module.css';
+import { courses, getCourses } from '@/app/lib/data';
+import { getData } from '@/app/api/course/route';
+import { deletePost } from '@/app/lib/action';
 
-import { courses } from '@/app/lib/data';
-
-const CoursesPage = ({ searchParams }) => {
+const CoursesPage = async ({ searchParams }) => {
   const q = searchParams?.q || '';
   const page = searchParams?.page || 1;
   //   const { count, products } = await fetchProducts(q, page);
-  const dataCourse = courses;
+  //const dataCourse = courses;
+  const courses = await getCourses();
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -27,7 +30,7 @@ const CoursesPage = ({ searchParams }) => {
           </tr>
         </thead>
         <tbody>
-          {dataCourse.map((course) => (
+          {courses?.map((course) => (
             <tr key={course._id}>
               <td>
                 <div className={styles.product}>
@@ -56,7 +59,7 @@ const CoursesPage = ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  <form>
+                  <form action={deletePost}>
                     <input
                       type="hidden"
                       name="id"

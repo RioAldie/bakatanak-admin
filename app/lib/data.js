@@ -1,3 +1,6 @@
+import { Course } from './models';
+import { connectToDb } from './utils';
+
 export const cards = [
   {
     id: 1,
@@ -129,3 +132,14 @@ export const talents = [
     name: 'Bakat Kepemimpinan',
   },
 ];
+
+export const getCourses = async () => {
+  try {
+    connectToDb();
+    const courses = await Course.find();
+    return courses;
+  } catch (err) {
+    console.log(err);
+    throw new Error('Failed to fetch Courses!');
+  }
+};
