@@ -1,6 +1,6 @@
 'use server';
 import { revalidatePath } from 'next/cache';
-import { Course, Factor, Indicator } from './models';
+import { Course, Factor, Indicator, Rule } from './models';
 import { connectToDb } from './utils';
 
 export const addCourse = async (prevState, formData) => {
@@ -91,6 +91,26 @@ export const addFactor = async (prevState, formData) => {
     console.log('saved to db');
     revalidatePath('/dashboard');
     revalidatePath('/factor');
+  } catch (err) {
+    console.log(err);
+    return { error: 'Something went wrong!' };
+  }
+};
+export const addRule = async (prevState, formData) => {
+  const { value, code, combine } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const newIndicator = new Rule({
+      code,
+      combine,
+      value,
+    });
+
+    await newIndicator.save();
+    console.log('saved to db');
+    revalidatePath('/dashboard');
+    revalidatePath('/rules');
   } catch (err) {
     console.log(err);
     return { error: 'Something went wrong!' };

@@ -70,6 +70,26 @@ const factorSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+const ruleSchema = new mongoose.Schema(
+  {
+    code: {
+      type: String,
+      maxlengh: 25,
+      required: true,
+    },
+    combine: {
+      type: String,
+      maxlengh: 125,
+      required: true,
+    },
+    value: {
+      type: String,
+      maxlengh: 125,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 export const Course =
   mongoose.models?.Course || mongoose.model('Course', courseSchema);
 export const Talent =
@@ -79,3 +99,5 @@ export const Indicator =
   mongoose.model('Indicator', indicatorSchema);
 export const Factor =
   mongoose.models?.Factor || mongoose.model('Factor', factorSchema);
+export const Rule =
+  mongoose.models?.Rule || mongoose.model('Rule', ruleSchema);
