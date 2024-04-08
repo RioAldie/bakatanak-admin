@@ -25,6 +25,11 @@ const menuItems = [
         icon: <MdDashboard />,
       },
       {
+        title: 'Certainty Factor',
+        path: '/dashboard/factor',
+        icon: <MdWork />,
+      },
+      {
         title: 'Talents',
         path: '/dashboard/talents',
         icon: <MdSupervisedUserCircle />,
@@ -40,8 +45,8 @@ const menuItems = [
         icon: <MdAttachMoney />,
       },
       {
-        title: 'Reports',
-        path: '/dashboard/reports',
+        title: 'Hipotesis',
+        path: '/dashboard/rules',
         icon: <MdAnalytics />,
       },
     ],
@@ -50,9 +55,9 @@ const menuItems = [
     title: 'Analytics',
     list: [
       {
-        title: 'Revenue',
-        path: '/dashboard/revenue',
-        icon: <MdWork />,
+        title: 'Reports',
+        path: '/dashboard/reports',
+        icon: <MdAnalytics />,
       },
       {
         title: 'Teams',

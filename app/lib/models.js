@@ -55,6 +55,21 @@ const indicatorSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+const factorSchema = new mongoose.Schema(
+  {
+    value: {
+      type: String,
+      maxlengh: 25,
+      required: true,
+    },
+    name: {
+      type: String,
+      maxlengh: 125,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 export const Course =
   mongoose.models?.Course || mongoose.model('Course', courseSchema);
 export const Talent =
@@ -62,3 +77,5 @@ export const Talent =
 export const Indicator =
   mongoose.models?.Indicator ||
   mongoose.model('Indicator', indicatorSchema);
+export const Factor =
+  mongoose.models?.Factor || mongoose.model('Factor', factorSchema);
