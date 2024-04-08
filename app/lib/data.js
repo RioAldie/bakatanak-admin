@@ -1,4 +1,4 @@
-import { Course } from './models';
+import { Course, Indicator, Talent } from './models';
 import { connectToDb } from './utils';
 
 export const cards = [
@@ -141,5 +141,25 @@ export const getCourses = async () => {
   } catch (err) {
     console.log(err);
     throw new Error('Failed to fetch Courses!');
+  }
+};
+export const getTalents = async () => {
+  try {
+    connectToDb();
+    const talents = await Talent.find();
+    return talents;
+  } catch (err) {
+    console.log(err);
+    throw new Error('Failed to fetch talents!');
+  }
+};
+export const getIndicators = async () => {
+  try {
+    connectToDb();
+    const indicators = await Indicator.find();
+    return indicators;
+  } catch (err) {
+    console.log(err);
+    throw new Error('Failed to fetch indicators!');
   }
 };

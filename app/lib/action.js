@@ -1,6 +1,6 @@
 'use server';
 import { revalidatePath } from 'next/cache';
-import { Course } from './models';
+import { Course, Indicator } from './models';
 import { connectToDb } from './utils';
 
 export const addCourse = async (prevState, formData) => {
@@ -38,6 +38,44 @@ export const deleteCourse = async (formData) => {
     await Course.findByIdAndDelete(id);
     console.log('deleted from db');
     revalidatePath('/course');
+  } catch (err) {
+    console.log(err);
+    return { error: 'Something went wrong!' };
+  }
+};
+
+export const addIndicator = async (prevState, formData) => {
+  // const title = formData.get("title");
+  // const desc = formData.get("desc");
+  // const slug = formData.get("slug");
+
+  const { title, code } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const newIndicator = new Indicator({
+      title,
+      code,
+    });
+
+    await newIndicator.save();
+    console.log('saved to db');
+    revalidatePath('/dashboard');
+    revalidatePath('/indicator');
+  } catch (err) {
+    console.log(err);
+    return { error: 'Something went wrong!' };
+  }
+};
+export const deleteIndicator = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+
+    await Indicator.findByIdAndDelete(id);
+    console.log('deleted from db');
+    revalidatePath('/indicator');
   } catch (err) {
     console.log(err);
     return { error: 'Something went wrong!' };
