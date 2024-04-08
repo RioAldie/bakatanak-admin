@@ -8,7 +8,8 @@ export const addCourse = async (prevState, formData) => {
   // const desc = formData.get("desc");
   // const slug = formData.get("slug");
 
-  const { name, desc, image } = Object.fromEntries(formData);
+  const { name, desc, image, category } =
+    Object.fromEntries(formData);
 
   try {
     connectToDb();
@@ -16,6 +17,7 @@ export const addCourse = async (prevState, formData) => {
       name,
       desc,
       image,
+      category,
     });
 
     await newCousre.save();

@@ -8,11 +8,31 @@ const courseSchema = new mongoose.Schema(
       required: true,
     },
     category: {
-      type: Array,
+      type: String,
+      maxlengh: 25,
     },
     image: {
       type: String,
       maxlengh: 25,
+    },
+    desc: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+const talentSchema = new mongoose.Schema(
+  {
+    code: {
+      type: String,
+      maxlengh: 25,
+      required: true,
+    },
+    name: {
+      type: String,
+      maxlengh: 125,
+      required: true,
     },
     desc: {
       type: String,

@@ -44,7 +44,9 @@ const CoursesPage = async ({ searchParams }) => {
                   {course.name}
                 </div>
               </td>
-              <td className={styles.desc}>{course.desc}</td>
+              <td className={styles.desc}>
+                {course.desc.slice(0, 30)}...
+              </td>
               {/* <td>{product.desc}</td>
               <td>${product.price}</td>
               

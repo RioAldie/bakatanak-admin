@@ -27,3 +27,10 @@
   color: var(--textColor);
   font-weight: bold;
 }
+.select {
+  cursor: pointer;
+}
+.option {
+  height: 60px;
+  color: var(--textColor);
+}
