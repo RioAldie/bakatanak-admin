@@ -1,12 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/app/ui/dashboard/course/course.module.css';
 
-import { getFactors, talents } from '@/app/lib/data';
+import { getFactors } from '@/app/lib/data';
 
-const FactorPage = async ({ searchParams }) => {
-  const q = searchParams?.q || '';
-  const page = searchParams?.page || 1;
+const FactorPage = async () => {
+  // const q = searchParams?.q || '';
+  // const page = searchParams?.page || 1;
   //   const { count, products } = await fetchProducts(q, page);
   const factors = await getFactors();
 

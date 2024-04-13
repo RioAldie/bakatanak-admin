@@ -4,7 +4,7 @@ import { addCourse } from '@/app/lib/action';
 import styles from './addForm.module.css';
 import { useFormState } from 'react-dom';
 
-const AddCoursePage = ({ userId }) => {
+const AddCoursePage = () => {
   const [state, formAction] = useFormState(addCourse, undefined);
 
   return (

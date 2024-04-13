@@ -1,14 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/app/ui/dashboard/course/course.module.css';
+import { getTalents } from '@/app/lib/data';
 
-import { courses, talents } from '@/app/lib/data';
-
-const TalentsPage = ({ searchParams }) => {
-  const q = searchParams?.q || '';
-  const page = searchParams?.page || 1;
+const TalentsPage = async () => {
   //   const { count, products } = await fetchProducts(q, page);
-  const dataTalents = talents;
+  const talents = await getTalents();
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -26,7 +22,7 @@ const TalentsPage = ({ searchParams }) => {
           </tr>
         </thead>
         <tbody>
-          {dataTalents.map((course) => (
+          {talents.map((course) => (
             <tr key={course._id}>
               <td>{course.code}</td>
               <td>

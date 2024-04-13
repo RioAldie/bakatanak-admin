@@ -1,12 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/app/ui/dashboard/course/course.module.css';
 
-import { courses, getRules, talents } from '@/app/lib/data';
+import { getRules } from '@/app/lib/data';
 
-const RulesPage = async ({ searchParams }) => {
-  const q = searchParams?.q || '';
-  const page = searchParams?.page || 1;
+const RulesPage = async () => {
   //   const { count, products } = await fetchProducts(q, page);
   const rules = await getRules();
   return (

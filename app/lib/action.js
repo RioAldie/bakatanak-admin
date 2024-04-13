@@ -2,6 +2,7 @@
 import { revalidatePath } from 'next/cache';
 import { Course, Factor, Indicator, Rule } from './models';
 import { connectToDb } from './utils';
+import { signIn } from '../auth';
 
 export const addCourse = async (prevState, formData) => {
   // const title = formData.get("title");
@@ -114,5 +115,17 @@ export const addRule = async (prevState, formData) => {
   } catch (err) {
     console.log(err);
     return { error: 'Something went wrong!' };
+  }
+};
+export const authenticate = async (prevState, formData) => {
+  const { username, password } = Object.fromEntries(formData);
+
+  try {
+    await signIn('credentials', { username, password });
+  } catch (err) {
+    if (err.message.includes('CredentialsSignin')) {
+      return 'Wrong Credentials';
+    }
+    throw err;
   }
 };

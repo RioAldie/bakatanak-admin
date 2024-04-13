@@ -1,10 +1,10 @@
 'use client';
 
-import { addCourse, addIndicator, addRule } from '@/app/lib/action';
+import { addRule } from '@/app/lib/action';
 import styles from './addForm.module.css';
 import { useFormState } from 'react-dom';
 
-const AddIndicatorPage = ({ userId }) => {
+const AddIndicatorPage = () => {
   const [state, formAction] = useFormState(addRule, undefined);
 
   return (

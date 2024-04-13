@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/app/ui/dashboard/course/course.module.css';
-import { courses, getCourses } from '@/app/lib/data';
-import { getData } from '@/app/api/course/route';
+import { getCourses } from '@/app/lib/data';
 import { deleteCourse } from '@/app/lib/action';
 
-const CoursesPage = async ({ searchParams }) => {
-  const q = searchParams?.q || '';
-  const page = searchParams?.page || 1;
+const CoursesPage = async () => {
+  // const q = searchParams?.q || '';
+  // const page = searchParams?.page || 1;
   //   const { count, products } = await fetchProducts(q, page);
   //const dataCourse = courses;
   const courses = await getCourses();

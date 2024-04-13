@@ -1,15 +1,12 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/app/ui/dashboard/course/course.module.css';
 
-import { courses, getIndicators, talents } from '@/app/lib/data';
+import { getIndicators } from '@/app/lib/data';
 import { deleteIndicator } from '@/app/lib/action';
 
-const IndicatorPage = async ({ searchParams }) => {
-  const q = searchParams?.q || '';
-  const page = searchParams?.page || 1;
+const IndicatorPage = async () => {
   //   const { count, products } = await fetchProducts(q, page);
-  const dataCourse = talents;
+
   const indicators = await getIndicators();
 
   return (

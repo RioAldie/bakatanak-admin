@@ -6,14 +6,12 @@ import {
   MdAttachMoney,
   MdWork,
   MdAnalytics,
-  MdPeople,
-  MdOutlineSettings,
-  MdHelpCenter,
   MdLogout,
 } from 'react-icons/md';
 import MenuLink from '../menulink/menulink';
 import styles from './sidebar.module.css';
 import Image from 'next/image';
+import { signOut } from '@/app/auth';
 
 const menuItems = [
   {
@@ -58,26 +56,6 @@ const menuItems = [
         title: 'Reports',
         path: '/dashboard/reports',
         icon: <MdAnalytics />,
-      },
-      {
-        title: 'Teams',
-        path: '/dashboard/teams',
-        icon: <MdPeople />,
-      },
-    ],
-  },
-  {
-    title: 'User',
-    list: [
-      {
-        title: 'Settings',
-        path: '/dashboard/settings',
-        icon: <MdOutlineSettings />,
-      },
-      {
-        title: 'Help',
-        path: '/dashboard/help',
-        icon: <MdHelpCenter />,
       },
     ],
   },

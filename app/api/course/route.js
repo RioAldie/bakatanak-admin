@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import { Axios } from 'axios';
 
 export const getData = async () => {
@@ -16,10 +15,11 @@ export const getData = async () => {
   return data;
 };
 
-export const postNewCourse = async (id) => {};
+export const postNewCourse = async () => {};
 
-export const deleteCourse = async (id) => {
+export const deleteCourse = async () => {
   const res = await Axios.delete(
     'https://bakatanak-server.vercel.app/course'
   );
+  return res;
 };
