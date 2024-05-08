@@ -22,7 +22,7 @@ export const addCourse = async (prevState, formData) => {
     });
 
     await newCousre.save();
-    console.log('saved to db');
+
     revalidatePath('/dashboard');
     revalidatePath('/courses');
   } catch (err) {
@@ -122,6 +122,7 @@ export const authenticate = async (prevState, formData) => {
 
   try {
     await signIn('credentials', { username, password });
+    return true;
   } catch (err) {
     if (err.message.includes('CredentialsSignin')) {
       return 'Wrong Credentials';
