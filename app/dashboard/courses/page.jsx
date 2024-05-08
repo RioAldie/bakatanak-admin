@@ -29,52 +29,55 @@ const CoursesPage = async () => {
           </tr>
         </thead>
         <tbody>
-          {courses?.map((course) => (
-            <tr key={course._id}>
-              <td>
-                <div className={styles.product}>
-                  <Image
-                    src={course.image || '/noproduct.jpg'}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className={styles.productImage}
-                  />
-                  {course.name}
-                </div>
-              </td>
-              <td className={styles.desc}>
-                {course.desc.slice(0, 30)}...
-              </td>
-              {/* <td>{product.desc}</td>
+          {courses
+            .slice()
+            .reverse()
+            ?.map((course) => (
+              <tr key={course._id}>
+                <td>
+                  <div className={styles.product}>
+                    <Image
+                      src={course.image || '/noproduct.jpg'}
+                      alt=""
+                      width={40}
+                      height={40}
+                      className={styles.productImage}
+                    />
+                    {course.name}
+                  </div>
+                </td>
+                <td className={styles.desc}>
+                  {course.desc.slice(0, 30)}...
+                </td>
+                {/* <td>{product.desc}</td>
               <td>${product.price}</td>
               
               <td>{product.stock}</td> */}
-              <td>{course.category}</td>
-              <td>{course.createdAt?.toString().slice(4, 16)}</td>
-              <td>
-                <div className={styles.buttons}>
-                  <Link href={`/dashboard/products/${course.id}`}>
-                    <button
-                      className={`${styles.button} ${styles.view}`}>
-                      View
-                    </button>
-                  </Link>
-                  <form action={deleteCourse}>
-                    <input
-                      type="hidden"
-                      name="id"
-                      value={course.id}
-                    />
-                    <button
-                      className={`${styles.button} ${styles.delete}`}>
-                      Delete
-                    </button>
-                  </form>
-                </div>
-              </td>
-            </tr>
-          ))}
+                <td>{course.category}</td>
+                <td>{course.createdAt?.toString().slice(4, 16)}</td>
+                <td>
+                  <div className={styles.buttons}>
+                    <Link href={`/dashboard/products/${course.id}`}>
+                      <button
+                        className={`${styles.button} ${styles.view}`}>
+                        View
+                      </button>
+                    </Link>
+                    <form action={deleteCourse}>
+                      <input
+                        type="hidden"
+                        name="id"
+                        value={course.id}
+                      />
+                      <button
+                        className={`${styles.button} ${styles.delete}`}>
+                        Delete
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
       {/* <Pagination count={count} /> */}

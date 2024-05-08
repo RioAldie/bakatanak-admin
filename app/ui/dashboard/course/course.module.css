@@ -68,7 +68,9 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+.addButton:hover {
+  background-color: #353175;
+}
 .table {
   width: 100%;
 }
@@ -104,7 +106,13 @@
 .view {
   background-color: teal;
 }
+.view:hover {
+  background-color: rgb(14, 85, 85);
+}
 
 .delete {
   background-color: crimson;
+}
+.delete:hover {
+  background-color: rgb(154, 20, 47);
 }

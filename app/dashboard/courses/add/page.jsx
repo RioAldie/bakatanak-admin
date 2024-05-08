@@ -3,12 +3,14 @@
 import { addCourse } from '@/app/lib/action';
 import styles from './addForm.module.css';
 import { useFormState } from 'react-dom';
+import { Toaster, toast } from 'sonner';
 
 const AddCoursePage = () => {
   const [state, formAction] = useFormState(addCourse, undefined);
 
   return (
     <div className={styles.section}>
+      <Toaster richColors />
       <form action={formAction} className={styles.container}>
         <h1>Add New Course</h1>
         <input type="text" name="name" placeholder="name" />
@@ -40,7 +42,8 @@ const AddCoursePage = () => {
           rows={10}
         />
         <button>Add</button>
-        {state?.error}
+        {state && toast.error('Gagal menambahkan kursus!')}
+        {!state && toast.success('Berhasil menambahkan kursus!')}
       </form>
     </div>
   );
