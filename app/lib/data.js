@@ -1,4 +1,11 @@
-import { Course, Factor, Indicator, Rule, Talent } from './models';
+import {
+  Consult,
+  Course,
+  Factor,
+  Indicator,
+  Rule,
+  Talent,
+} from './models';
 import { connectToDb } from './utils';
 
 export const cards = [
@@ -70,5 +77,15 @@ export const getRules = async () => {
   } catch (err) {
     console.log(err);
     throw new Error('Failed to fetch rules!');
+  }
+};
+export const getConsults = async () => {
+  try {
+    connectToDb();
+    const consults = await Consult.find();
+    return consults;
+  } catch (err) {
+    console.log(err);
+    throw new Error('Failed to fetch Consults!');
   }
 };

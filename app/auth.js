@@ -1,13 +1,14 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { authConfig } from './authconfig';
-import { User } from './lib/models';
+import { Admin, User } from './lib/models';
 import { connectToDb } from './lib/utils';
+import bcrypt from 'bcrypt';
 
 const login = async (credentials) => {
   try {
     connectToDb();
-    const user = await User.findOne({
+    const user = await Admin.findOne({
       username: credentials.username,
     });
 
@@ -18,9 +19,10 @@ const login = async (credentials) => {
     //   credentials.password,
     //   user.password
     // );
+
     const isPasswordCorrect = user.password === credentials.password;
 
-    console.log(isPasswordCorrect);
+    // console.log(credentials.password, user.password);
     if (!isPasswordCorrect) throw new Error('Wrong password!');
 
     return user;

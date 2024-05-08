@@ -53,8 +53,8 @@ const menuItems = [
     title: 'Analytics',
     list: [
       {
-        title: 'Reports',
-        path: '/dashboard/reports',
+        title: 'Consult',
+        path: '/dashboard/consult',
         icon: <MdAnalytics />,
       },
     ],
@@ -72,7 +72,7 @@ const Sidebar = () => {
           height="50"
         />
         <div className={styles.userDetail}>
-          <span className={styles.username}>Sherlin Tzu</span>
+          <span className={styles.username}>Admin2</span>
           <span className={styles.userTitle}>Administrator</span>
         </div>
       </div>
